@@ -28,10 +28,7 @@ module.exports = {
   entry: {
     libs: [paths.src.scss + '/libs.scss'],
     theme: [paths.src.js + '/theme.js', paths.src.scss + '/theme.scss'],
-    minter: [paths.src.js + '/minter.jsx'],
-    coordinates: [paths.src.js + '/coordinates.jsx'],
-    gmap: [paths.src.js + '/gmap.jsx'],
-    custcoordinate: [paths.src.js + '/custom-coordinate.jsx'],
+    minter: [paths.src.js + '/minter.jsx']
   },
   mode: 'development',
   module: {
