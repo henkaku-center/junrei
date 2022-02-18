@@ -9,5 +9,3 @@ import './navbar';
 import './popover';
 import './tooltip';
 
-// User
-import './user.js';
