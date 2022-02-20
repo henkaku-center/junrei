@@ -24,5 +24,5 @@ window.Offcanvas = Offcanvas;
 window.Popover = Popover;
 window.ScrollSpy = ScrollSpy;
 window.Tab = Tab;
-window.Toast = Toast;
-window.Tooltip = Tooltip;
+  window.Toast = Toast;
+  window.Tooltip = Tooltip;

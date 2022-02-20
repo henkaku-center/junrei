@@ -1,6 +1,6 @@
 import {ethers} from 'ethers';
 import {ContractABI} from './nftabi';
-import { OC_PRELAUNCH, OC_CONTRACT_ADDRESS } from "./appconfig";
+import { JUNREI_PRELAUNCH, JUNREI_CONTRACT_ADDRESS } from "./appconfig";
 import React from 'react';
 
 
@@ -48,7 +48,7 @@ export class ContractInteractor extends React.Component {
                             isWalletConnected={this.state.isWalletConnected}
                             walletProvider={this.state.walletProvider}
                             connectWallet={this.connectWallet}
-                            preLaunch={OC_PRELAUNCH} />
+                            preLaunch={JUNREI_PRELAUNCH} />
                      </div>
                 </div>
                 <div className="row pt-4">
@@ -106,7 +106,7 @@ export class MintButton extends React.Component {
         this.setState({mintResult: null});
     }
     async mintToken() {
-        const contract =  new ethers.Contract(OC_CONTRACT_ADDRESS, ContractABI, this.props.provider);
+        const contract =  new ethers.Contract(JUNREI_CONTRACT_ADDRESS, ContractABI, this.props.provider);
         const signer = this.props.provider.getSigner();
         const connectedContract = contract.connect(signer);
         this.setState({isMinting: true});
