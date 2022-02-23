@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { ContractInteractor } from './app';
 import { ethers } from "ethers";
 import { ContractABI } from "./nftabi";
-import { OC_CONTRACT_ADDRESS, OC_NETWORK } from "./appconfig";
+import { JUNREI_CONTRACT_ADDRESS, JUNREI_NETWORK } from "./appconfig";
 
 ReactDOM.render(<ContractInteractor />, document.getElementById('interactor'));
 
@@ -12,9 +12,9 @@ function SupplyStats(props) {
     useEffect(() => {
       try {
         const contract = new ethers.Contract(
-          OC_CONTRACT_ADDRESS,
+          JUNREI_CONTRACT_ADDRESS,
           ContractABI,
-          ethers.getDefaultProvider(OC_NETWORK)
+          ethers.getDefaultProvider(JUNREI_NETWORK)
         );
         contract.totalSupply().then((value) => setMinted(value));
       } catch (e) {

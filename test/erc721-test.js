@@ -3,21 +3,21 @@ const { ethers } = require("hardhat");
 
 describe("NFTs available via the contract", function () {
     it("Should be claimable the regular way by contract owner", async function () {
-        const NFTFactory = await ethers.getContractFactory("OpenCoordinates")
+        const NFTFactory = await ethers.getContractFactory("Junrei")
         const nft = await NFTFactory.deploy();
         await nft.deployed();
         await expect(() => nft.claim()).to.changeTokenBalance(nft, NFTFactory.signer, 1);
     });
     it("Should be claimable the regular way by the public", async function () {
         const [owner, nonOwnerWallet] = await ethers.getSigners();
-        const NFTFactory = await ethers.getContractFactory("OpenCoordinates");
+        const NFTFactory = await ethers.getContractFactory("Junrei");
         const nft = await NFTFactory.deploy();
         await nft.deployed();
         await expect(() => nft.connect(nonOwnerWallet).claim()).to.changeTokenBalance(nft, nonOwnerWallet, 1);
     });
     it("Should generate larger token IDs on subsequent claims", async function () {
         const [owner, nonOwnerWallet] = await ethers.getSigners();
-        const NFTFactory = await ethers.getContractFactory("OpenCoordinates");
+        const NFTFactory = await ethers.getContractFactory("Junrei");
         const nft = await NFTFactory.deploy();
         await nft.deployed();
         await expect(() => nft.connect(nonOwnerWallet).claim()).to.changeTokenBalance(nft, nonOwnerWallet, 1);
@@ -25,20 +25,20 @@ describe("NFTs available via the contract", function () {
     });
     it("Should have reserve IDs that are not claimable by the public", async function () {
         const [owner, nonOwnerWallet] = await ethers.getSigners();
-        const NFTFactory = await ethers.getContractFactory("OpenCoordinates")
+        const NFTFactory = await ethers.getContractFactory("Junrei")
         const nft = await NFTFactory.deploy();
         await nft.deployed();
         await expect(nft.connect(nonOwnerWallet).ownerClaim(9501)).to.be.revertedWith('Ownable: caller is not the owner');
     });
     it("Should have reserve IDs that are claimable by contract owner", async function () {
-        const NFTFactory = await ethers.getContractFactory("OpenCoordinates")
+        const NFTFactory = await ethers.getContractFactory("Junrei")
         const nft = await NFTFactory.deploy();
         await nft.deployed();
         await expect(() => nft.ownerClaim(9501)).to.changeTokenBalance(nft, NFTFactory.signer, 1);
     });
     it("Should produce no token URI for claimed tokens before reveal", async function () {
         const [owner, nonOwnerWallet] = await ethers.getSigners();
-        const NFTFactory = await ethers.getContractFactory("OpenCoordinates");
+        const NFTFactory = await ethers.getContractFactory("Junrei");
         const nft = await NFTFactory.deploy();
         await nft.deployed();
         await nft.claim();
@@ -46,7 +46,7 @@ describe("NFTs available via the contract", function () {
     });
     it("Should produce token URI for claimed tokens after reveal", async function () {
         const [owner, nonOwnerWallet] = await ethers.getSigners();
-        const NFTFactory = await ethers.getContractFactory("OpenCoordinates");
+        const NFTFactory = await ethers.getContractFactory("Junrei");
         const nft = await NFTFactory.deploy();
         await nft.deployed();
         await nft.claim();
@@ -55,7 +55,7 @@ describe("NFTs available via the contract", function () {
     });
     it("Should not allow claiming by users when paused", async function () {
         const [owner, nonOwnerWallet] = await ethers.getSigners();
-        const NFTFactory = await ethers.getContractFactory("OpenCoordinates");
+        const NFTFactory = await ethers.getContractFactory("Junrei");
         const nft = await NFTFactory.deploy();
         await nft.deployed();
         await nft.pause();
@@ -63,7 +63,7 @@ describe("NFTs available via the contract", function () {
     });
     it("Should allow claiming by users after being unpaused", async function () {
         const [owner, nonOwnerWallet] = await ethers.getSigners();
-        const NFTFactory = await ethers.getContractFactory("OpenCoordinates");
+        const NFTFactory = await ethers.getContractFactory("Junrei");
         const nft = await NFTFactory.deploy();
         await nft.deployed();
         await nft.pause();
@@ -72,7 +72,7 @@ describe("NFTs available via the contract", function () {
     });
     it("Should cap claims at a maximum of 5, even after transfers", async function () {
         const [owner, nonOwnerWallet] = await ethers.getSigners();
-        const NFTFactory = await ethers.getContractFactory("OpenCoordinates");
+        const NFTFactory = await ethers.getContractFactory("Junrei");
         const nft = await NFTFactory.deploy();
         await nft.deployed();
         await expect(() => nft.claim()).to.changeTokenBalance(nft, owner, 1);

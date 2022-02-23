@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {ethers} from 'ethers';
 import {ContractABI} from './nftabi';
-import {OC_CONTRACT_ADDRESS} from "./appconfig";
+import {JUNREI_CONTRACT_ADDRESS} from "./appconfig";
 import CoordMaps from './gmap';
 
 
@@ -81,7 +81,7 @@ class Coordinates extends React.Component {
             this.state.walletDisplay = walletAddress.substring(0, 5) + "..." + (walletAddress.substring(walletAddress.length - 4));
 
             //check wallet for tokens/load data
-            const contract =  new ethers.Contract(OC_CONTRACT_ADDRESS, ContractABI, provider);
+            const contract =  new ethers.Contract(JUNREI_CONTRACT_ADDRESS, ContractABI, provider);
             const connectedContract = contract.connect(signer);
             const tokenCount = await connectedContract.balanceOf(walletAddress);
 

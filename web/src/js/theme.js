@@ -7,4 +7,7 @@ import './modal';
 import './navbar-dropdown';
 import './navbar';
 import './popover';
-import './tooltip'
+import './tooltip';
+
+// User
+import './user.js';

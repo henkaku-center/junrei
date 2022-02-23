@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {ethers} from 'ethers';
 //import {ContractABI} from './nftabi';
-//import {OC_CONTRACT_ADDRESS} from "./appconfig";
+//import {JUNRAI_CONTRACT_ADDRESS} from "./appconfig";
 //import CoordMaps from './gmap';
 
 class CustomCoordinate extends React.Component {
